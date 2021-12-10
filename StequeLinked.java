@@ -89,7 +89,6 @@ public class Steque<Item> implements Iterable<Item> {
         }
         first.next=oldfirst;
         n++;
-        
 
     }
     
@@ -102,7 +101,9 @@ public class Steque<Item> implements Iterable<Item> {
         Item item =first.item;
         first=first.next;
         n--;
-        return item;    
+        return item;
+
+       
 
     }
     
@@ -112,7 +113,6 @@ public class Steque<Item> implements Iterable<Item> {
      */
     public boolean isEmpty() {
         return first==null;
-        
 
     }
     
@@ -122,7 +122,6 @@ public class Steque<Item> implements Iterable<Item> {
      */
     public int size() {
         return n;
-        
 
     }
     
@@ -134,6 +133,7 @@ public class Steque<Item> implements Iterable<Item> {
     public Iterator<Item> iterator() {
         return new LinkedIterator(first);
     }
+
     // an iterator, doesn't implement remove() since it's optional
     private class LinkedIterator implements Iterator<Item> {
         private Node<Item>current;
@@ -159,6 +159,6 @@ public class Steque<Item> implements Iterable<Item> {
     }
 }
 }
-
-    // an iterator, doesn't implement remove() since it's optional
+public class StequeLinked {
     
+}
