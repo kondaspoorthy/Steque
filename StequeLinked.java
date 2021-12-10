@@ -79,7 +79,16 @@ public class Steque<Item> implements Iterable<Item> {
      * @param item Item to be inserted.
      */
     public void push(Item item) {
-        
+        if(item==null) throw new IllegalArgumentException();
+        Node<Item> oldfirst=first;
+        first=new Node<Item>();
+        first.item=item;
+        if(last==null&& oldfirst==null){
+            last=first;
+            //last2=first;
+        }
+        first.next=oldfirst;
+        n++;
 
     }
     
@@ -88,7 +97,11 @@ public class Steque<Item> implements Iterable<Item> {
      * @return Item object from steque.
      */
     public Item pop() {
-        
+        if(isEmpty())  throw new  NoSuchElementException();
+        Item item =first.item;
+        first=first.next;
+        n--;
+        return item;
 
        
 
@@ -99,7 +112,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @return true if steque is empty, false otherwise.
      */
     public boolean isEmpty() {
-        
+        return first==null;
 
     }
     
@@ -108,7 +121,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @return size as integer.
      */
     public int size() {
-        
+        return n;
 
     }
     
@@ -122,4 +135,30 @@ public class Steque<Item> implements Iterable<Item> {
     }
 
     // an iterator, doesn't implement remove() since it's optional
+    private class LinkedIterator implements Iterator<Item> {
+        private Node<Item>current;
+
+        public LinkedIterator(Node<Item> first) {
+            current = first;
+        }
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        public Item next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            Item item = current.item;
+            current = current.next; 
+            return item; 
+
+    }
+}
+}
+public class StequeLinked {
     
+}
