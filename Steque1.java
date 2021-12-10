@@ -75,6 +75,14 @@ public class Steque1<Item> implements Iterable<Item> {
      * @throws java.util.NoSuchElementException if this stack is empty
      */
     public Item pop() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        Item item = a[n-1];
+        a[n-1] = null;                              // to avoid loitering
+        n--;
+        // shrink size of array if necessary
+        if (n > 0 && n == a.length/4) resize(a.length/2);
+        return item;
+
        
     }
 
