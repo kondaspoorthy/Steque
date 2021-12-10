@@ -31,6 +31,7 @@ public class Steque1<Item> implements Iterable<Item> {
      * @return the number of items in the stack
      */
     public int size() {
+        return n;
     }
 
 
