@@ -121,6 +121,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @return size as integer.
      */
     public int size() {
+        return n;
         
 
     }
@@ -133,6 +134,31 @@ public class Steque<Item> implements Iterable<Item> {
     public Iterator<Item> iterator() {
         return new LinkedIterator(first);
     }
+    // an iterator, doesn't implement remove() since it's optional
+    private class LinkedIterator implements Iterator<Item> {
+        private Node<Item>current;
+
+        public LinkedIterator(Node<Item> first) {
+            current = first;
+        }
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        public Item next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            Item item = current.item;
+            current = current.next; 
+            return item; 
+
+    }
+}
+}
 
     // an iterator, doesn't implement remove() since it's optional
     
